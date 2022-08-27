@@ -19,8 +19,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn install --silent
+      - run: yarn install --silent --frozen-lockfile
       - run: npm run test
+      - run: npm run test:e2e
 
   deploy_vps:
     name: deploy_vps
@@ -81,7 +82,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd .ci && npm i
+      - run: cd .ci && yarn install --silent
       - run: node ./.ci/script/restart.js
         env:
           SSH_HOST: ${{secrets.SSH_HOST}}

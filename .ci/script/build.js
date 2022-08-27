@@ -9,7 +9,7 @@ ssh.on('ready', async () => {
   console.log('------- build --------');
 
   // install node dependency
-  await exec('cd /github/server && yarn install --force --silent --non-interactive');
+  await exec('cd /github/server && yarn install --frozen-lockfile --force --silent --non-interactive');
 
   // build
   await exec('cd /github/server && npm run build');

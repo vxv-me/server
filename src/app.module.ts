@@ -1,10 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
+import { HttpExceptionFilter } from '~/core/httpError.filter';
+import { HttpErrorInterceptor } from '~/core/httpError.interceptor';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+
+import { MainModule } from '~/modules/main/main.module';
+import { MetricsModule } from '~/modules/metrics/metrics.module';
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [MainModule, MetricsModule],
+  controllers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: HttpErrorInterceptor,
+    },
+  ],
 })
 export class AppModule {}
