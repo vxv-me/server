@@ -4,7 +4,7 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 
 import { MainService } from './main.service';
 
-// @UseInterceptors(MetricsInterceptor) // track interceptor
+@UseInterceptors(MetricsInterceptor) // track interceptor
 @Controller()
 export class MainController {
   constructor(private readonly mainService: MainService) {}

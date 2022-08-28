@@ -1,4 +1,4 @@
-import { CORS_HOST_REGEXP } from '~/configs/index';
+import { CORS_HOST_REGEXP, CORS_ALLOWED_HEADERS } from '~/configs/index';
 
 export const originMathcRegexp = (
   origin: string,
@@ -24,14 +24,7 @@ export default {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  allowedHeaders: [
-    'Access-Control-Allow-Origin',
-    'Origin',
-    'X-Requested-With',
-    'Accept',
-    'Content-Type',
-    'Authorization',
-  ],
+  allowedHeaders: CORS_ALLOWED_HEADERS,
   credentials: true,
   exposedHeaders: 'Authorization',
   methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],

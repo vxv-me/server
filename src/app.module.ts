@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { HttpExceptionFilter } from '~/core/httpError.filter';
 import { HttpErrorInterceptor } from '~/core/httpError.interceptor';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+
 
 import { MainModule } from '~/modules/main/main.module';
 import { MetricsModule } from '~/modules/metrics/metrics.module';

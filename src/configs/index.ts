@@ -8,7 +8,7 @@ export const CORS_HOST_REGEXP: Array<RegExp> = [
   /()?.vxv.me$/, // with subdomain
 ];
 
-export const CORS_ALLO_HEADERS: Array<string> = [
+export const CORS_ALLOWED_HEADERS: Array<string> = [
   'Access-Control-Allow-Origin',
   'Origin',
   'X-Requested-With',
